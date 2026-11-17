@@ -4,9 +4,9 @@
 
 Summary:		QT MIDI Metronome using ALSA Sequencer
 Name:		kmetronome
-Version:		1.4.1
+Version:		1.4.2
 Release:		1
-License:		GPLv2+
+License:		GPL-2.0-or-later
 Url:		https://kmetronome.sourceforge.io/
 Group:		Sound
 Source0:	https://download.sourceforge.net/kmetronome/%{name}-%{version}.tar.bz2
@@ -24,10 +24,10 @@ BuildRequires:		cmake(Qt6Svg)
 BuildRequires:		cmake(Qt6SvgWidgets)
 BuildRequires:		cmake(Qt6Widgets)
 BuildRequires:		pkgconfig(alsa)
-BuildRequires:		pkgconfig(drumstick-alsa) >= 2.10.0
+BuildRequires:		pkgconfig(drumstick-alsa) >= 2.11.2
 BuildRequires:		pkgconfig(vulkan)
 BuildRequires:		pkgconfig(xkbcommon-x11)
-Requires:	drumstick >= 2.10.0
+Requires:	drumstick >= 2.11.2
 
 %description
 A MIDI metronome with QT interface, based on the ALSA sequencer. The intended
@@ -52,6 +52,9 @@ accurate timing thanks to the ALSA sequencer.
 
 %prep
 %autosetup -p1
+
+# Fix FSF address
+sed -i 's/51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA/31 Milk Street, # 960789, Boston, MA 02196, USA/g' COPYING
 
 
 %build
